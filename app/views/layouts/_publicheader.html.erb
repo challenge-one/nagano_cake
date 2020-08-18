@@ -1,0 +1,15 @@
+<li class="header_list">
+	ようこそ、<%= current_customer.name %>さん！
+</li>
+<li class="header_list">
+  <%= link_to 'Top', root_path %>
+</li>
+<li class="header_list">
+  <%= link_to '商品一覧', public_products_path %>
+</li>
+<li class="header_list">
+  <%= link_to 'カート', public_cart_items_path %>
+</li>
+<li class="header_list">
+  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+</li>

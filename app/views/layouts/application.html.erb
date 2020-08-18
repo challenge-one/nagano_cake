@@ -10,8 +10,38 @@
   </head>
 
   <body>
-
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-    <%= yield %>
+    <header>
+      <div class="navbar navbar-fixed-top" >
+        <div class="container">
+          <div class="nav navbar-nav navbar-left"style="margin-top: 20px;">
+            <%= image_tag "emblemmatic-nagano_cake-logo-6.png",width: "130px" %>
+          </div>
+          <nav>
+            <ul class="nav navbar-nav navbar-right"style="margin-top: 40px">
+            <% if customer_signed_in? %>
+              <%= render "publicheader" %>
+            <% elsif admin_signed_in? %>
+              <%= render "admin_header" %>
+            <% else %>
+              <li class="header_list">
+                <%= link_to 'About', homes_about_path,class: "btn btn-default" %>
+              </li>
+              <li class="header_list">
+                <%= link_to '商品一覧', public_products_path,class: "btn btn-default" %>
+              </li>
+              <li class="header_list">
+                <%= link_to '新規登録', new_customer_session_path,class: "btn btn-default" %>
+              </li>
+              <li class="header_list">
+                <%= link_to "ログイン", customer_session_path,class: "btn btn-default" %>
+              </li>
+            <% end %>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <div style="height: 200px;"></div>
+  <%= yield %>
   </body>
 </html>
