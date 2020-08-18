@@ -1,5 +1,15 @@
-<li><%= link_to "商品一覧" admin_products_path %></li>
-<li><%= link_to "会員一覧" admin_customres_path %></li>
-<li><%= link_to "商品履歴" admin_orders_path %></li>
-<li><%= link_to "ジャンル一覧" admin_genres_path %></li>
-<li><%= link_to "ログアウト" admin_destroy_admin_sessions_path %></li>
+<li class="header_list">
+	<%= link_to "商品一覧" admin_products_path %>
+	</li>
+<li class="header_list">
+	<%= link_to "会員一覧" admin_customres_path %>
+</li>
+<li class="header_list">
+	<%= link_to "商品履歴" admin_orders_path %>
+</li>
+<li class="header_list">
+	<%= link_to "ジャンル一覧" admin_genres_path %>
+</li>
+<li class="header_list">
+	<%= link_to "ログアウト" admin_destroy_admin_sessions_path, method: :delete %>
+</li>
