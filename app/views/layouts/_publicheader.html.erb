@@ -2,14 +2,14 @@
 	ようこそ、<%= current_customer.family_name %>さん！
 </li>
 <li class="header_list">
-  <%= link_to 'マイページ', public_customers_path %>
+  <%= link_to 'マイページ', public_customers_path,class: "btn btn-default" %>
 </li>
 <li class="header_list">
-  <%= link_to '商品一覧', public_products_path %>
+  <%= link_to '商品一覧', public_products_path,class: "btn btn-default" %>
 </li>
 <li class="header_list">
-  <%= link_to 'カート', public_cart_items_path %>
+  <%= link_to 'カート', public_cart_items_path,class: "btn btn-default" %>
 </li>
 <li class="header_list">
-  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: "btn btn-default" %>
 </li>
