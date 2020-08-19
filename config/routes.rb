@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   }
   devise_for :customers, controllers: {
     sessions: 'customers/sessions',
-    passwords: 'customers/passwords'
+    passwords: 'customers/passwords',
+    registrations: 'customers/registrations'
   }
 
   namespace :admin do
