@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="col-lg-offset-2">
+    <div class="row, log_in_title">
+
+      <h4>会員の方はこちらからログイン</h4>
+    </div>
+
+    <div class="row">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <div class="col-lg-offset-2">
+        <table class="log_in_table">
+          <tr>
+            <div class="field">
+              <td><%= f.label :メールアドレス %></td>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"40" %></td>
+            </div>
+          </tr>
+          <tr>
+            <div class="field">
+            <td><%= f.label :パスワード %></td>
+            <td><%= f.password_field :password, autocomplete: "current-password", :size=>"40" %></td>
+            </div>
+          </tr>
+        </table>
+      </div>
+
+      <div class="actions_button, col-lg-offset-4">
+        <%= f.submit "ログイン", class: "col-lg-2 btn btn-primary" %></br>
+      </div>
+    <% end %>
+    </div>
+
+      <div class="log_in_title">
+        <h4>登録がお済みのでない方</h4>
+      </div>
+      <div class="col-lg-offset-1">
+        <%= render "customers/shared/links" %>
+      </div>
+
+  </div>
+</div>
