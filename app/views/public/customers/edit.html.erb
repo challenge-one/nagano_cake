@@ -1,2 +1,73 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container main_container">
+  <div class="title">
+    <h4>登録情報編集</h4>
+  </div>
+
+  <%= form_for(@customer, url: public_customers_path) do |f| %>
+
+  <table class="sign_in_table">
+    <tr>
+      <div class="field">
+        <td><%= f.label :名前 %></td>
+        <td>(姓)</td>
+        <td><%= f.text_field :family_name, autofocus: true, autocomplete: "family_name" %></td>
+        <td>(名)</td>
+        <td><%= f.text_field :first_name, autocomplete: "first_name" %></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+          <td><%= f.label :フリガナ %></td>
+          <td>(セイ)</td>
+          <td><%= f.text_field :family_rubi, autocomplete: "family_rubi" %></td>
+          <td>(メイ)</td>
+          <td><%= f.text_field :first_rubi, autocomplete: "first_rubi" %><td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td><%= f.label :メールアドレス %></td>
+        <td></td>
+        <td><%= f.email_field :email, autocomplete: "email" %></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td><%= f.label :"郵便番号(ハイフンなし)" %></td>
+        <td></td>
+        <td><%= f.text_field :postcode, autocomplete: "postcode" %></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td><%= f.label :住所 %></td>
+        <td></td>
+        <td colspan="4"><%= f.text_field :address, autocomplete: "address", :size=>"60" %></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td><%= f.label :"電話番号(ハイフンなし)" %></td>
+        <td></td>
+        <td><%= f.text_field :tell, autocomplete: "tell" %></td>
+      </div>
+    </tr>
+
+  </table>
+
+    <div class="actions_button, col-lg-offset-4">
+      <%= f.submit "編集内容を保存する", class: "col-lg-3 btn btn-primary" %>
+    </div>
+
+    <div class="withdrawal_button, col-lg-offset-8">
+      <%= link_to "退会する", customers_unsubscribe_path, class: "col-lg-3 btn btn-danger" %>
+    </div>
+
+  <% end %>
+
+</td>
