@@ -31,7 +31,8 @@ Rails.application.routes.draw do
   get '/admin' => 'admin/homes#top'
   get 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
   get 'customers/unsubscribe' => 'public/customers#unsubscribe'
-  get 'customers/withdraw' => 'public/customers#withdraw'
+  patch 'customers/withdraw' => 'public/customers#withdraw'
+  # get 'customers/withdraw' => 'public/customers#withdraw'=>patchに修正
   get 'orders/confirm' => 'public/orders#confirm'
   get 'orders/complete' => 'public/orders#complete'
 
