@@ -1,2 +1,59 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<!-- genreの部分テンプレート -->
+			<table class="table">
+				<tr>
+					<th>
+						ジャンル検索
+					</th>
+				</tr>
+					<td>ケーキ</td>
+					<td>焼き菓子</td>
+					<td>プリン</td>
+					<td>キャンディ</td>
+			</table>
+			<!-- genreの部分テンプレート -->
+		</div>
+		<div class="col-xs-9">
+			<div class="top-image">
+				<div class="top-image-content">
+					<p class="top-image-text">
+						ようこそ、NaganoCakeへ！<br>
+						このサイトは、ケーキ販売のECサイトになります。<br>
+						会員でない方も商品の閲覧はできますが、<br>
+						購入には会員登録が必要になります。
+					</p>
+				</div>
+			</div>
+			<div class="recommendation">
+				<h2>オススメ商品</h2>
+				<% @products.each do |product| %>
+					<div class="recommendation-box">
+						<li><%= attachment_image_tag product, :image_id, :fill, 50, 50 %></li>
+						<li><%= product.name %></li>
+						<li><%= product.price %></li>
+					</div>
+					<div class="recommendation-box">
+						<li><%= attachment_image_tag product, :image_id, :fill, 50, 50 %></li>
+						<li><%= product.name %></li>
+						<li><%= product.price %></li>
+					</div>
+					<div class="recommendation-box">
+						<li><%= attachment_image_tag product, :image_id, :fill, 50, 50 %></li>
+						<li><%= product.name %></li>
+						<li><%= product.price %></li>
+					</div>
+					<div class="recommendation-box">
+						<li><%= attachment_image_tag product, :image_id, :fill, 50, 50 %></li>
+						<li><%= product.name %></li>
+						<li><%= product.price %></li>
+					</div>
+				<% end %>
+				<div class="navbar-right">
+					<%= link_to "もっと見る", public_products_path %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
