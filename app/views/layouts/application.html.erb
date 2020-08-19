@@ -19,9 +19,9 @@
           <nav>
             <ul class="nav navbar-nav navbar-right"style="margin-top: 40px">
             <% if customer_signed_in? %>
-              <%= render "publicheader" %>
+              <%= render "layouts/publicheader" %>
             <% elsif admin_signed_in? %>
-              <%= render "admin_header" %>
+              <%= render "layouts/admin_header" %>
             <% else %>
               <li class="header_list">
                 <%= link_to 'About', homes_about_path,class: "btn btn-default" %>
@@ -30,7 +30,7 @@
                 <%= link_to '商品一覧', public_products_path,class: "btn btn-default" %>
               </li>
               <li class="header_list">
-                <%= link_to '新規登録', new_customer_session_path,class: "btn btn-default" %>
+                <%= link_to '新規登録', new_customer_registration_path,class: "btn btn-default" %>
               </li>
               <li class="header_list">
                 <%= link_to "ログイン", customer_session_path,class: "btn btn-default" %>
