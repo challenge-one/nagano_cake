@@ -1,2 +1,28 @@
-<h1>Public::Deliveries#edit</h1>
-<p>Find me in app/views/public/deliveries/edit.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-offset-2">
+			<div class="deliveries_title">
+				<h4>配送先登録/一覧</h4>
+			</div>
+			<div class="row">
+				<%= form_for @delivery, url: public_delivery_path, method: :patch do |f| %>
+					<table class="tabele">
+						<tr>
+							<td>郵便番号(ハイフンなし)</td>
+							<td><%= f.text_field :postcode, autofocus: true %></td>
+						</tr>
+						<tr>
+							<td>住所</td>
+							<td><%= f.text_field :address, autofocus: true %></td>
+						</tr>
+						<tr>
+							<td>宛名</td>
+							<td><%= f.text_field :addressee, autofocus: true %></td>
+							<td><%= f.submit "編集する", class: "btn btn-primary" %></td>
+						</tr>
+					</table>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
