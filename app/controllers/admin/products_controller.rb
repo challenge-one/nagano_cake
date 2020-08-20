@@ -4,29 +4,38 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
-    @product.save
-    redirect_to admin_product_path(@product)
+       @product = Product.new(product_params)
+    if @product.save
+       flash[:notice] = "You have creatad product successfully."
+       redirect_to admin_product_path(@product)
+    else
+       render :new
+    end
   end
+
   def edit
-    @product = Product.find(params[:id])
+      @product = Product.find(params[:id])
   end
 
   def show
-    @product = Product.find(params[:id])
-    @genre = @product.genre
+      @product = Product.find(params[:id])
+      @genre = @product.genre
   end
 
   def index
-    @products = Product.all
+      @products = Product.order(created_at: :ASC).page(params[:page])
   end
 
   def update
-    @product = Product.find(params[:id])
-    @product.update(product_params)
-    redirect_to admin_product_path(@product)
-  end
-
+        @product = Product.find(params[:id])
+     if @product.update(product_params)
+        flash[:notice] = "You have updated product successfully."
+        redirect_to admin_product_path(@product)
+    else
+        reder :edit
+    end
+ end
+ 
   def destroy
   end
 def product_params

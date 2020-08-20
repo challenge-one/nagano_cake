@@ -1,33 +1,48 @@
-<div class="container container-new">
-    <div class="row">
-       <div class="col-md-5">
-<h3>商品詳細</h3>
-<%= attachment_image_tag @product, :image, :fill, 200, 200%>
-</div>
-<div class="col-md-7">
-	<div>
-  <label>商品名</label>
-  <%= @product.name %>
-</div>
-<div>
-  <label>商品説明</label>
-  <%= @product.introduction  %>
-  </div>
-  <div>
-  <label>ジャンル</label>
-  <%= @genre.name %>
-  </div>
-  <div>
-  <label>税抜価格</label>
-  <%= @product.price %>円
-  </div>
-  <div>
-  <label>販売ステータス</label>
- <%=@product.status_i18n %>
- </div>
- <div>
- <%= link_to "edit", edit_admin_product_path(@product) %>
- </div>
-</div>
-</div>
+         <% if flash[:notice] %>
+    <div class="flash">
+    <%= flash[:notice] %>
+    </div>
+        <% end %>
+
+    <div class="container show-container">
+        <h3 class="show">商品詳細</h3>
+         <div class="row">
+           <div class="col-md-6" style="text-align: center;">
+           <%= attachment_image_tag @product, :image, :fill, 300, 300%>
+          </div>
+
+      <table>
+           <div class="col-md-6" style="margin-top: 60px;">
+      <tr>
+      <th><label>商品名</label></th>
+      <td><%= @product.name %></td>
+      </tr>
+
+      <tr>
+      <th><label>商品説明</label></th>
+      <td><%= @product.introduction  %></td>
+      </tr>
+
+      <tr>
+      <th><label>ジャンル</label></th>
+      <td><%= @genre.name %></td>
+      </tr>
+
+      <tr>
+      <th><label>税込価格(税抜価格)</label></th>
+      <td><%= @product.price * 1.10 %>(<%= @product.price %>)円</td>
+      </tr>
+
+      <tr>
+      <th><label>販売ステータス</label></th>
+      <td><%=@product.status_i18n %></td>
+      </tr>
+          </div>
+      </table>
+
+      <div style="margin-top: 10px;">
+       <%= link_to "編集する", edit_admin_product_path(@product),class:"btn-lg btn-primary"%>
+      </div>
+         </div>
+    </div>
 </div>
