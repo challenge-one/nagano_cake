@@ -4,3 +4,9 @@ ja:
       status:
         true: "有効"
         false: "無効"
+ja:
+  enums:
+    product:
+      status:
+        true: "販売中"
+        false: "売切中"

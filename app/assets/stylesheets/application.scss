@@ -44,3 +44,28 @@ color:#FFFFFF;
  .header_list {
  	margin-right: 30px;
  }
+ .product-form-image{
+    display:inline-block;
+	position:absolute;
+	top:20%;
+	left:35%;
+	margin-bottom:30px;
+ }
+ .product-form-image h3{
+   background:rgba(0,0,0,0.3);
+   display: inline-block;
+   border-radius: 3px;
+   color:#FFFFFF;
+}
+ .product-form{
+	display:inline-block;
+	position:absolute;
+	top:23%;
+	right:25%;
+}
+.image-file h3{
+	text-align:center;
+	background:rgba(0,0,0,0.3);
+	border-radius: 3px;
+	color:#FFFFFF;
+}

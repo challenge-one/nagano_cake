@@ -1,2 +1,21 @@
-<h1>Admin::Products#index</h1>
-<p>Find me in app/views/admin/products/index.html.erb</p>
+<div class="col-xs-9">
+<h2>商品一覧</h2>
+<table class="table table-hover table-inverse">
+<tr>
+<th style ="border-top:none">商品ID</th>
+<th style ="border-top:none">商品名</th>
+<th style ="border-top:none">税抜価格</th>
+<th style ="border-top:none">ジャンル</th>
+<th style ="border-top:none">ステータス</th>
+</tr>
+<% @products.each do |product| %>
+<tr>
+<td><%= product.id%></td>
+<td><%= link_to admin_product_path(product) do %><%= product. name%><% end %></td>
+<td><%= product.price%></td>
+<td><%= product.genre.name%></td>
+<td><%= product.status_i18n%></td>
+</tr>
+<% end %>
+</table>
+　　　</div>
