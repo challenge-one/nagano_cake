@@ -1,2 +1,57 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-6">
+			<h4 class="customer-detail"><%= @customer.family_name + @customer.first_name %>さんの会員情報</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">
+			<p class="detail">顧客ID</p>
+			<p class="detail">氏名</p>
+			<p class="detail">フリガナ</p>
+			<p class="detail">郵便番号</p>
+			<p class="detail">住所</p>
+			<p class="detail">電話番号</p>
+			<p class="detail">メールアドレス</p>
+		</div>
+		<div class="col-xs-9">
+			<p class="detail">
+				<%= @customer.id%>
+				<!-- 条件分岐できていない -->
+					<% if @customer.status == 'true' %>
+				<span class="label label-info">有効会員</span>
+					<% elsif @customer.status == 'false' %>
+				<span class="label label-danger">退会済会員</span>
+					<% end %>
+			</p>
+			<p class="detail">
+				<%= @customer.family_name %>
+				<span><%= @customer.first_name %></p></span>
+			</p>
+			<p class="detail">
+				<%= @customer.family_rubi %>
+				<span><%= @customer.first_rubi %></span>
+			</p>
+			<p class="detail">
+				<%= @customer.postcode %>
+			</p>
+			<p class="detail">
+				<%= @customer.address %>
+			</p>
+			<p class="detail">
+				<%= @customer.tell %>
+			</p>
+			<p class="detail">
+				<%= @customer.email %>
+			</p>
+		</div>
+	</div>
+	<div class="row"style="margin-top:30px;">
+		<p class="col-xs-1">
+			<%= link_to "編集する",edit_admin_customer_path(@customer),class: "btn btn-primary" %>
+		</p>
+		<p class="col-xs-offset-2">
+			<%= link_to "注文履歴一覧を見る",admin_orders_path,class: "btn btn-primary" %>
+		</p>
+	</div>
+</div>

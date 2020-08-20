@@ -16,9 +16,8 @@
 	width: 275px;
 }
 
-.container {
-	margin: 0 auto;
-	margin-bottom: 100px;
+.main_container {
+	margin: 0 auto 100px auto;
 }
 
 .sign_in_table td{
@@ -32,3 +31,8 @@
 .actions_button {
 	margin: 0 auto;
 }
+
+.button_table td{
+	padding: 5px 5px;
+}
+
