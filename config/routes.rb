@@ -26,7 +26,9 @@ Rails.application.routes.draw do
     resources :cart_items, except: [:new,:edit,:show]
   end
 
-  get '/' => 'public/homes#top'
+  root to: 'public/homes#top'
+
+  # get '/' => 'public/homes#top'=>root_pathに修正
   get 'homes/about' => 'public/homes#about'
   get '/admin' => 'admin/homes#top'
   get 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
