@@ -10,3 +10,7 @@ ja:
       status:
         true: "販売中"
         false: "売切中"
+    customer:
+      status:
+        true: "有効"
+        false: "退会済"

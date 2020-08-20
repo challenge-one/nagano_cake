@@ -6,10 +6,9 @@
 
 		<div class="col-xs-10">
 			<div class="row">
-			<h2>商品一覧(全<%= @products.count %>件)</h2>
+			<h2><%= @genre.name %>一覧(全<%= @genre.products.count %>件)</h2>
 			</div>
-			<% @products.each do |product| %>
-			<%= link_to public_product_path(product) do %>
+			<% @genre_products.each do |product| %>
 			<div class="list-box" style="display:inline-block;">
 			    <%= attachment_image_tag product, :image, :fill, 200, 200, format: 'jpeg' %>
 			    <div class="list-title">
@@ -17,7 +16,6 @@
 			      <p>¥<%= product.price%></p>
 			    </div>
 			 </div>
-			 <% end %>
 			<% end %>
 		</div>
 	</div>
