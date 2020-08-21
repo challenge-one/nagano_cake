@@ -41,6 +41,13 @@
         </div>
       </div>
     </header>
+
+    <% if flash[:notice] %>
+    <div class= "alert alert-success row" style="text-align: center;">
+      <%= flash[:notice]%>
+    </div>
+    <% end %>
+
   <%= yield %>
   </body>
 </html>
