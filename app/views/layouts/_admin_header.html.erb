@@ -1,15 +1,15 @@
 <li class="header_list">
-	<%= link_to "商品一覧", admin_products_path %>
+	<%= link_to "商品一覧", admin_products_path,class: "btn btn-default" %>
 	</li>
 <li class="header_list">
-	<%= link_to "会員一覧" ,admin_customers_path %>
+	<%= link_to "会員一覧", admin_customers_path,class: "btn btn-default" %>
 </li>
 <li class="header_list">
-	<%= link_to "商品履歴", admin_orders_path %>
+	<%= link_to "注文履歴一覧", admin_orders_path,class: "btn btn-default" %>
 </li>
 <li class="header_list">
-	<%= link_to "ジャンル一覧", admin_genres_path %>
+	<%= link_to "ジャンル一覧", admin_genres_path,class: "btn btn-default" %>
 </li>
 <li class="header_list">
-	<%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+	<%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: "btn btn-default" %>
 </li>

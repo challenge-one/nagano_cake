@@ -11,13 +11,13 @@
 
   <body>
     <header>
-      <div class="navbar navbar-fixed-top" >
+      <div class="navbar navbar-fixed-top" style="position: relative;" >
         <div class="container">
           <div class="nav navbar-nav navbar-left"style="margin-top: 20px;">
             <%= image_tag "emblemmatic-nagano_cake-logo-6.png",width: "130px",class: "img-responsive" %>
           </div>
           <nav>
-            <ul class="nav navbar-nav navbar-right"style="margin-top: 40px">
+            <ul class="nav navbar-nav navbar-right"style="margin-top: 40px;">
             <% if customer_signed_in? %>
               <%= render "layouts/publicheader" %>
             <% elsif admin_signed_in? %>
@@ -41,7 +41,6 @@
         </div>
       </div>
     </header>
-    <div style="height: 200px;"></div>
   <%= yield %>
   </body>
 </html>
