@@ -1,24 +1,28 @@
-<div class="col-xs-9">
-<h2>商品一覧</h2>
-	<div class="row">
-		<%= link_to "新規登録", new_admin_product_path, class: "btn btn-primary" %>
-	</div>
-<table class="table table-hover table-inverse">
-<tr>
-<th style ="border-top:none">商品ID</th>
-<th style ="border-top:none">商品名</th>
-<th style ="border-top:none">税抜価格</th>
-<th style ="border-top:none">ジャンル</th>
-<th style ="border-top:none">ステータス</th>
-</tr>
-<% @products.each do |product| %>
-<tr>
-<td><%= product.id%></td>
-<td><%= link_to admin_product_path(product) do %><%= product. name%><% end %></td>
-<td><%= product.price%></td>
-<td><%= product.genre.name%></td>
-<td><%= product.status_i18n%></td>
-</tr>
-<% end %>
-</table>
-　　　</div>
+
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+    <%= link_to (new_admin_product_path) do %><i class="fas fa-plus"></i><% end %>
+	<h2>商品一覧</h2>
+	    <table class="table table-hover table-inverse">
+	  <tr>
+	<th style ="border-top:none">商品ID</th>
+	<th style ="border-top:none">商品名</th>
+	<th style ="border-top:none">税抜価格</th>
+	<th style ="border-top:none">ジャンル</th>
+	<th style ="border-top:none">ステータス</th>
+	   </tr>
+	   <tr>
+	<% @products.each do |product| %>
+	<td><%= product.id%></td>
+	<td><%= link_to admin_product_path(product) do %><%= product. name%><% end %></td>
+	<td><%= product.price%></td>
+	<td><%= product.genre.name%></td>
+	<td><%= product.status_i18n%></td>
+       </tr>
+       <% end %>
+       <%= paginate @products %>
+	    </table>
+　　　  </div>
+</div>
+</div>
