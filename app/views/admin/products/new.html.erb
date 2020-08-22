@@ -19,7 +19,7 @@
   <%= f.select :status, Product.statuses.keys.map {|k| [I18n.t("enums.product.status.#{k}"), k]}, include_blank: "選択して下さい" %>
   <br>
   <br>
-  <%= f.submit "新規登録",class:"btn-lg btn-primary" %>
+  <%= f.submit "新規登録", method: :create, class:"btn-lg btn-primary" %>
 <% end %>
       </div>˙
     </div>

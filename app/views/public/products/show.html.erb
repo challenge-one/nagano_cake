@@ -33,6 +33,13 @@
 				</div>
 				<div class="col-xs-3">
 					<%= link_to "カートに入れる", public_cart_items_path,method: :post,class: "btn btn-info" %>
+
+				<!---->
+					<%= form_with @cart_items, model: [@cart_items],  url: public_cart_items_path,method: :post do |form| %>
+
+					<% end %>
+				<!---->
+
 				</div>
 			</div>
 		</div>
