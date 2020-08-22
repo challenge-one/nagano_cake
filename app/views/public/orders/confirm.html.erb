@@ -1,9 +1,27 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-6 col-xs-offset-3">
-			<div class="center-block">
-				<h3>ご購入ありがとうございました！</h3>
-			</div>
-		</div>
-	</div>
+  <div class="row">
+
+    <div class="col-xs-10 offset-1 space">
+      <div class="row">
+        <h2>注文情報確認</h2>
+      </div>
+    </div>
+
+          <table class="table_deliveries_new">
+            <tr>
+              <td>郵便番号(ハイフンなし)</td>
+              <td><%= f.text_field :postcode, autofocus: true %></td>
+            </tr>
+            <tr>
+              <td>住所</td>
+              <td><%= f.text_field :address, autofocus: true %></td>
+            </tr>
+            <tr>
+              <td>宛名</td>
+              <td><%= f.text_field :addressee, autofocus: true %></td>
+              <td><%= f.submit "登録する", class: "btn btn-success" %></td>
+            </tr>
+          </table>
+
+  </div>
 </div>

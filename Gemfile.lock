@@ -281,7 +281,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   enum_help
-
+  font-awesome-sass (~> 5.4.1)
   jbuilder (~> 2.5)
   jquery-rails
   kaminari (~> 1.2.1)
