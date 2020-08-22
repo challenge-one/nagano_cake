@@ -1,11 +1,5 @@
 ja:
   enums:
-    genre:
-      status:
-        true: "有効"
-        false: "無効"
-ja:
-  enums:
     product:
       status:
         true: "販売中"
@@ -14,3 +8,7 @@ ja:
       status:
         true: "有効"
         false: "退会済"
+    genre:
+      status:
+        true: "有効"
+        false: "無効"
