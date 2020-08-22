@@ -1,14 +1,13 @@
 class Public::ProductsController < ApplicationController
   def show
   	@product = Product.find(params[:id])
+    @cart = @product.cart_items.new
+    @genres = Genre.where(status: 'true').all
   end
 
-  def genre_index
-  	@genre = Genre.find(params[:id])
-  	@genre_products = @genre.products.all
-  end
 
   def index
-  	@products = Product.all
+  	@products = Product.where(status: 'true').page(params[:page]).per(8)
+    @genres = Genre.where(status: 'true').all
   end
 end

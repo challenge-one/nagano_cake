@@ -1,3 +1,12 @@
+<% if @genre.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @genre.errors.full_messages.each do |message| %>
+      <li class="error-message"><%= message %></li>
+      <% end %>
+      </ul>
+  </div>
+  <% end %>
 <div class="container">
 	<div class="row">
 			<h4 class="col-xs-offset-2 col-xs-3">ジャンル一覧・追加</h4>
@@ -29,7 +38,6 @@
 					<% @genres.each do |genre| %>
 					<tr>
 						<td><%= genre.name %></td>
-						<!-- gem enum_helpを使用すると -->
 						<td><%= genre.status_i18n %></td>
 						<td><%= link_to"編集する",edit_admin_genre_path(genre),class: "btn btn-primary" %></td>
 					</tr>
