@@ -14,8 +14,10 @@ class Customer < ApplicationRecord
   validates :email, uniqueness: true, presence: true
 
    enum status: {
-   	true: 0,
-   	false: 1
+    true: 0,
+    false: 1
    },_prefix: true
+
+   
 end
 

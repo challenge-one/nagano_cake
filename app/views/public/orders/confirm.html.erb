@@ -1,2 +1,69 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-10 offset-1 space">
+      <div class="row">
+        <h2>注文情報確認</h2>
+      </div>
+    </div>
+
+    <!-- form_withで情報受け取り？ -->
+
+      <div class="row">
+        <div class="col-xs-8">
+          <table class="order_confirm table-bordered table-condensed">
+            <thead>
+              <tr>
+                <td>商品名</td>
+                <td></td>
+                <td>単価(税込)</td>
+                <td>数量</td>
+                <td>小計</td>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- each文? -->
+              <tr>
+                <!-- <td><%= attachment_image_tag %></td> -->
+                <!-- <td>商品名 link_to?</td> -->
+                <!-- <td>単価 link_to?</td>-->
+                <!-- <td>数量 link_to?</td> -->
+                <!-- <td>小計 link_to?</td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-xs-4">
+          <table class="order_confirm_total table-bordered table-condensed">
+            <tr>
+              <td>送料</td>
+              <td>商品合計</td>
+              <td>請求金額</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- 支払い方法情報 -->
+      <div class="row">
+        <div class="col-xs-8">
+          <h4>支払い方法</h4>
+        </div>
+      </div>
+
+      <!-- お届け先情報 -->
+      <div class="row">
+        <div class="col-xs-8">
+          <h4>お届け先</h4>
+        </div>
+      </div>
+
+      <!-- 購入確定ボタン -->
+      <div class="row">
+        <div class="col-xs-6 offset-xs-6">
+          <!--  <%= f.submit "購入を確定する", class: "btn btn-success" %> -->
+        </div>
+      </div>
+
+  </div>
+</div>
