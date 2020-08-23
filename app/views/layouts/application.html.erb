@@ -39,6 +39,19 @@
             </ul>
           </nav>
         </div>
+        <% if customer_signed_in? %>
+        <div class="row">
+            <div class="col-xs-offset-9 col-xs-3">
+              <%= form_tag(public_search_path,method: :get) do %>
+              <%= text_field_tag :name,"", placeholder: "商品を検索" %>
+              <%= button_tag do %>
+              <span class="glyphicon glyphicon-search" aria-hidden="true">
+            </span>
+            <% end %>
+              <% end %>
+            </div>
+        </div>
+        <% end %>
       </div>
     </header>
 

@@ -1,2 +1,79 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2 offset-2">
+			<h4>注文履歴詳細</h4>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-8">
+			<strong>注文情報</strong>
+			<table class="table table-bordered">
+					<tr>
+						<td class="active">注文日</td>
+						<td>2020/08/23</td>
+					</tr>
+					<tr>
+						<td class="active">配送先</td>
+						<td>
+							1111111 <br>
+							東京都東京都東京都東京都東京都東京都東京都 <br>
+							1111111
+						</td>
+					</tr>
+					<tr>
+						<td class="active">支払方法</td>
+						<td>銀行振込</td>
+					</tr>
+					<tr>
+						<td class="active">ステータス</td>
+						<td>入金確認</td>
+					</tr>
+			</table>
+		</div>
+
+		<div class="col-xs-4">
+			<strong>請求情報</strong>
+			<table class="table table-bordered">
+				<tr>
+					<td class="active">商品合計</td>
+					<td>1500</td>
+				</tr>
+				<tr>
+					<td class="active">配送料</td>
+					<td>800</td>
+				</tr>
+				<tr>
+					<td class="active"><strong>ご請求額</strong></td>
+					<td><strong>2300</strong></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-9">
+			<strong>注文内容</strong>
+			<table class="table table-bordered">
+				<thead>
+					<tr class="active">
+						<th>商品</th>
+						<th>単価（税込）</th>
+						<th>個数</th>
+						<th>小計</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							イチゴショートケーキ
+						</td>
+						<td>500</td>
+						<td>2</td>
+						<td>1000</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

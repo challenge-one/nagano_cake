@@ -12,4 +12,17 @@ ja:
       status:
         true: "有効"
         false: "無効"
+    order:
+      status:
+        wait: "入金待ち"
+        confirmation: "入金確認"
+        creating: "製作中"
+        set_delivery: "発送準備中"
+        deliveried: "発送済"
+    order_item:
+      status:
+        wait: "着手不可"
+        create_wait: "制作待ち"
+        creating: "製作中"
+        created: "制作完了"
 
