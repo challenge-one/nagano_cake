@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :orders, except: [:update,:destroy,:edit]
     resources :cart_items, except: [:new,:edit,:show]
     resources :genres, only: [:show]
+    delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
   end
 
   root to: 'public/homes#top'
@@ -32,7 +33,6 @@ Rails.application.routes.draw do
   # get '/' => 'public/homes#top'=>root_pathに修正
   get 'homes/about' => 'public/homes#about'
   get '/admin' => 'admin/homes#top'
-  get 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
   get 'customers/unsubscribe' => 'public/customers#unsubscribe'
   patch 'customers/withdraw' => 'public/customers#withdraw'
   # get 'customers/withdraw' => 'public/customers#withdraw'=>patchに修正
