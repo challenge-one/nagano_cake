@@ -1,3 +1,36 @@
 // Place all the styles related to the public/cart_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.cart_title h3 {
+	background: #dfdfdf;
+	width: 225px;
+	text-align: center;
+}
+
+.destroy-all-btn {
+	margin-bottom: 10px;
+}
+
+.cart_item-table th{
+	padding: 10px;
+	background-color: #eeeeee;
+}
+
+.cart_item-table td{
+	text-align: left;
+}
+
+.small-td {
+	width: 175px;
+}
+
+.btn-td {
+	width: 100px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.price_table {
+	margin: 0 auto;
+}
