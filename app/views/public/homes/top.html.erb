@@ -30,22 +30,7 @@
 				<h2>オススメ商品</h2>
 				<% @products.each do |product| %>
 					<div class="recommendation-box">
-						<li><%= attachment_image_tag product, :image_id, :fill, 50, 50 %></li>
-						<li><%= product.name %></li>
-						<li><%= product.price %></li>
-					</div>
-					<div class="recommendation-box">
-						<li><%= attachment_image_tag product, :image_id, :fill, 50, 50 %></li>
-						<li><%= product.name %></li>
-						<li><%= product.price %></li>
-					</div>
-					<div class="recommendation-box">
-						<li><%= attachment_image_tag product, :image_id, :fill, 50, 50 %></li>
-						<li><%= product.name %></li>
-						<li><%= product.price %></li>
-					</div>
-					<div class="recommendation-box">
-						<li><%= attachment_image_tag product, :image_id, :fill, 50, 50 %></li>
+						<li><%= attachment_image_tag product, :image, :fill, 50, 50 %></li>
 						<li><%= product.name %></li>
 						<li><%= product.price %></li>
 					</div>
