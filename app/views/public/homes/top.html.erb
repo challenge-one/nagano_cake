@@ -34,6 +34,21 @@
 						<li><%= product.name %></li>
 						<li><%= product.price %></li>
 					</div>
+					<div class="recommendation-box">
+						<li><%= attachment_image_tag product, :image, :fill, 50, 50 %></li>
+						<li><%= product.name %></li>
+						<li><%= product.price %></li>
+					</div>
+					<div class="recommendation-box">
+						<li><%= attachment_image_tag product, :image, :fill, 50, 50 %></li>
+						<li><%= product.name %></li>
+						<li><%= product.price %></li>
+					</div>
+					<div class="recommendation-box">
+						<li><%= attachment_image_tag product, :image, :fill, 50, 50 %></li>
+						<li><%= product.name %></li>
+						<li><%= product.price %></li>
+					</div>
 				<% end %>
 				<div class="navbar-right">
 					<%= link_to "もっと見る", public_products_path %>
