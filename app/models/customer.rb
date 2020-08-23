@@ -17,6 +17,12 @@ class Customer < ApplicationRecord
     true: 0,
     false: 1
    },_prefix: true
+   # true:有効、false:無効
+
+  def active_for_authentication?
+    super && (self.status == "true")
+  end
+  # statusがtrueの場合は有効会員(ログイン可能)
 
    
 end
