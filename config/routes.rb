@@ -28,11 +28,14 @@ Rails.application.routes.draw do
     delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
   end
 
-  get '/' => 'public/homes#top'
+  root to: 'public/homes#top'
+
+  # get '/' => 'public/homes#top'=>root_pathに修正
   get 'homes/about' => 'public/homes#about'
   get '/admin' => 'admin/homes#top'
   get 'customers/unsubscribe' => 'public/customers#unsubscribe'
-  get 'customers/withdraw' => 'public/customers#withdraw'
+  patch 'customers/withdraw' => 'public/customers#withdraw'
+  # get 'customers/withdraw' => 'public/customers#withdraw'=>patchに修正
   get 'orders/confirm' => 'public/orders#confirm'
   get 'orders/complete' => 'public/orders#complete'
 
