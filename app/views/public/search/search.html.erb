@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+			<%= render "public/genres/index", genres: @genres %>
+		</div>
+
+		<div class="col-xs-10">
+
+			<h2>検索商品一覧(全<%= @products.count %>件)</h2>
+			<% if @products.count == 0 %>
+			<p>商品はありません</p>
+			<% end %>
+
+			<% @products.each do |product| %>
+			<%= link_to public_product_path(product) do %>
+			<div class="list-box" style="display:inline-block;">
+			    <%= attachment_image_tag product, :image, :fill, 200, 200, format: 'jpeg' %>
+			    <div class="list-title">
+			      <p><%= product.name %></p>
+			      <p>(税込)¥<%= price_include_tax(product.price) %></p>
+			    </div>
+			 </div>
+			 <% end %>
+			<% end %>
+		</div>
+		<%= paginate @products %>
+	</div>
+</div>
