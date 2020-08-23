@@ -5,7 +5,6 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_items = CartItem.all
-    #@cart_items = @customer.cart_item.all
   end
 
   def create
@@ -37,7 +36,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    @cart_item.destroy_all
+    CartItem.destroy_all
     redirect_to public_products_path
   end
 
