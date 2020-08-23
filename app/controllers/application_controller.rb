@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
 	helper_method :current_cart_item
 
-  	def current_cart
+  	def current_cart_item
     	if session[:cart_item_id]
       		@cart_item = CartItem.find(session[:cart_item_id])
     	else

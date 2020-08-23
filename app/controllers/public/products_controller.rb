@@ -1,7 +1,7 @@
 class Public::ProductsController < ApplicationController
   def show
   	@product = Product.find(params[:id])
-    @cart = @product.cart_items.new
+  	@cart_item = CartItem.new
     @genres = Genre.where(status: 'true').all
   end
 

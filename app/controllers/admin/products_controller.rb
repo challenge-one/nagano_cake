@@ -35,7 +35,7 @@ class Admin::ProductsController < ApplicationController
         reder :edit
     end
  end
- 
+
   def destroy
   end
 def product_params

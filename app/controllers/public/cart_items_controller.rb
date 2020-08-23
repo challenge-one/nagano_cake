@@ -1,35 +1,54 @@
 class Public::CartItemsController < ApplicationController
 
-  before_action :setup_cart_item!, only: [:create, :update, :destroy, :destroy_all]
+  before_action :setup_cart_item, only: [:show, :update, :destroy]
+  before_action :set_customer
 
   def index
-    @cart_items = current_cart.cart_items
+    @cart_items = CartItem.all
+    #@cart_items = @customer.cart_item.all
   end
 
   def create
-    if @cart_item.blank?
-      @cart_item = current_cart.cart_items.build(product_id: params[:product_id])
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.customer_id = current_customer.id
+    @current_item = CartItem.find_by(product_id: @cart_item.product_id, customer_id: @cart_item.customer_id)
+    if @current_item.blank?
+      if @cart_item.save
+        redirect_to public_cart_items_path
+      else
+        @carts_items = @customer.cart_items.all
+        render public_cart_items_path
+      end
+    else
+      @current_item.number += params[:number].to_i
+      @current_item.update(cart_item_params)
+      redirect_to public_cart_items_path
     end
-
-    @cart_item.number += params[:number].to_i
-    @cart_item.save
-    redirect_to current_cart
   end
 
   def update
     @cart_item.update(number: params[:number].to_i)
-    redirect_to current_cart
+    redirect_to public_cart_items_path
   end
 
   def destroy
     @cart_item.destroy
-    redirect_to current_cart
+    redirect_to public_cart_items_path
   end
 
   def destroy_all
+    @cart_item.destroy_all
+    redirect_to public_products_path
   end
 
-  def setup_cart_item!
-    @cart_item = current_cart.cart_items.find_by(product_id: params[:product_id])
+  private
+  def set_customer
+    @customer = current_customer
+  end
+  def setup_cart_item
+    @cart_item = CartItem.find(params[:id])
+  end
+  def cart_item_params
+    params.require(:cart_item).permit(:customer_id, :product_id, :number)
   end
 end
