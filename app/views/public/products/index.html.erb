@@ -5,10 +5,12 @@
 		</div>
 
 		<div class="col-xs-10">
+
 			<h2>商品一覧(全<%= @products.count %>件)</h2>
 			<% if @products.count == 0 %>
 			<p>商品はありません</p>
 			<% end %>
+
 			<% @products.each do |product| %>
 			<%= link_to public_product_path(product) do %>
 			<div class="list-box" style="display:inline-block;">

@@ -2,50 +2,51 @@
 <div class="container container-new">
   <div class="row">
     <div class="col-md-6 image-file">
-<% if @product.errors.any? %>
-  <div id="error_explanation" class="alert alert-danger">
-    <ul>
-      <% @product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% if @product.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+        <ul>
+          <% @product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+        </div>
       <% end %>
-    </ul>
-  </div>
-<% end %>
-<h3>商品新規登録</h3>
-  <%= form_for(@product,url: admin_products_path) do |f| %>
-       <%= f.attachment_field :image %>
-   </div>
+      <h3>商品新規登録</h3>
+      <%= form_for(@product,url: admin_products_path) do |f| %>
+        <%= f.attachment_field :image %>
+    </div>
 
-<div class="col-md-6">
-  <div class="col-md-12">
-     <h4>商品名</h4>
-     <%= f.text_field :name,class:"form-control"  %>
-  </div>
+    <div class="col-md-6">
+        <div class="col-md-12">
+          <h4>商品名</h4>
+          <%= f.text_field :name,class:"form-control"  %>
+        </div>
 
- <div class="col-md-12">
-    <h4>商品説明</h4>
-    <%= f.text_area :introduction, size: "50x10",class:"form-control"  %>
- </div>
+        <div class="col-md-12">
+          <h4>商品説明</h4>
+          <%= f.text_area :introduction, size: "50x10",class:"form-control"  %>
+        </div>
 
- <div class="col-md-12">
-    <h4>ステータス</h4>
-    <%= f.collection_select :genre_id, Genre.where(status: 'true'),:id, :name, include_blank: "選択して下さい"%>
- </div>
+        <div class="col-md-12">
+          <h4>ステータス</h4>
+          <%= f.collection_select :genre_id, Genre.all,:id, :name, include_blank: "選択して下さい"%>
+        </div>
 
- <div class="col-md-12">
-    <h4>税抜価格</h4>
-    <%= f.text_field :price, size: "50x20"%><span style="font-weight: bold; padding-left:3px;">円</span>
- </div>
+        <div class="col-md-12">
+          <h4>税抜価格</h4>
+          <%= f.text_field :price, size: "50x20"%><span style="font-weight: bold; padding-left:3px;">円</span>
+        </div>
 
-<div class="col-md-10">
-    <h4>販売ステータス</h4>
-    <%= f.select :status, Product.statuses.keys.map {|k| [I18n.t("enums.product.status.#{k}"), k]}, include_blank: "選択して下さい"%>
-</div>
+        <div class="col-md-10">
+          <h4>販売ステータス</h4>
+          <%= f.select :status, Product.statuses.keys.map {|k| [I18n.t("enums.product.status.#{k}"), k]}, include_blank: "選択して下さい"%>
+        </div>
 
-<div class="col-md-8" style="margin-top:5px;">
-    <%= f.submit "新規登録",class:"btn-lg btn-primary" %>
-</div>
+        <div class="col-md-8" style="margin-top:5px;">
+          <%= f.submit "新規登録", class:"btn-lg btn-primary" %>
+        </div>
       <% end %>
+
     </div>
   </div>
 </div>
