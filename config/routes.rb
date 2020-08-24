@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get 'customers/unsubscribe' => 'public/customers#unsubscribe'
   get 'customers/withdraw' => 'public/customers#withdraw'
   get 'orders/confirm' => 'public/orders#confirm'
+  post 'orders/confirm' => 'public/orders#confirm'
   get 'orders/complete' => 'public/orders#complete'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -10,21 +10,21 @@ class Public::OrdersController < ApplicationController
     if current_customer.cart_items.exists?
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
-
+      @customer = current_customer
       @add = params[:order][:add].to_i
       case @add
-      when 1
-        @order.postcode = @customer.postcode
-        @order.address = @customer.address
-        @order.addressee = full_name(@customer)
-      when 2
-        @order.postcode = params[:order][:post_code]
-        @order.address = params[:order][:address]
-        @order.addressee = params[:order][:addressee]
-      when 3
-        @order.postcode = params[:order][:postcode]
-        @order.address = params[:order][:address]
-        @order.addressee = params[:order][:addressee]
+        when 1
+          @order.postcode = @customer.postcode
+          @order.address = @customer.address
+          @order.addressee = full_name(@customer)
+        when 2
+          @order.postcode = params[:order][:postcode]
+          @order.address = params[:order][:address]
+          @order.addressee = params[:order][:addressee]
+        when 3
+          @order.postcode = params[:order][:postcode]
+          @order.address = params[:order][:address]
+          @order.addressee = params[:order][:addressee]
       end
       @order.save
       if Delivery.find_by(address: @order.address).nil?
@@ -61,30 +61,30 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     if @order.customer_id != current_customer.id
       redirect_back(fallback_location: root_path)
-      flash[:notice = "アクセスに失敗しました"
+      flash[:notice] = "アクセスに失敗しました"
     end
   end
 
   def confirm
       @order = Order.new
       @cart_item = current_customer.cart_items
-      @order.cash_method = params[:order][:cash_method]
+      @order.cash_method = params[:cash_method]
 
-      @add = params[:order][:add].to_i
+      @add = params[:add].to_i
       case @add
       when 1
         @order.postcode = @customer.postcode
         @order.address = @customer.address
-        @order.addressee = @customer.family_name + @cutomer.first_name
+        @order.addressee = @customer.family_name
       when 2
         @sta = params[:order][:address].to_i
         @address = Delivery.find(@sta)
         @order.postcode =@address.address
         @order.addressee = @address.addressee
       when 3
-        @order.postcode = params[:order][:new_add][:postcode]
-        @order.address = params[:order][:new_add][:address]
-        @order.addressee = params[:order][:new_add][:addressee]
+        @order.postcode = params[:order][:postcode]
+        @order.address = params[:order][:address]
+        @order.addressee = params[:order][:addressee]
       end
     end
 
@@ -95,7 +95,6 @@ class Public::OrdersController < ApplicationController
   def set_customer
     @customer = current_customer
   end
-
   def order_params
     params.require(:order).permit(
       :created_at, :address, :addressee, :status, :cash_method, :postcode, :postage,

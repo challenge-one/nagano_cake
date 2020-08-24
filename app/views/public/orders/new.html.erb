@@ -1,3 +1,4 @@
+<div class ="container">
 <div class="col-lg-10 offset-1 space">
 
   <div class="row">
@@ -19,7 +20,7 @@
         <%= f.radio_button :cash_method, true, {checked: true} %> クレジットカード
       </label>
       <label class="btn btn-outline-secondary" style="width:50%">
-        <%= f.radio_button :cash_method, false, {} %> 銀行振込
+        <%= f.radio_button :cash_method, false, {checked: false} %> 銀行振込
       </label>
     </div>
   </div>
@@ -34,7 +35,7 @@
       <label><%= f.radio_button :add, 1, checked: true, checked: "checked" %>ご自身の住所</label><br>
       <%= @customer.postcode %>
       <%= @customer.address %>
-      <%= @customer.full_name %>
+      <%= @customer.family_name %>
     </p>
   </div>
 
@@ -42,7 +43,7 @@
   <div class="row space-sm">
     <p>
       <label><%= f.radio_button :add, 2, style: "display: inline-block" %>登録済住所から選択</label><br>
-      <%= f.collection_select :address, @customer.addresses, :id, :address %>
+    <%= f.collection_select :address, @customer.deliveries, :id, :address %>
     </p>
   </div>
 
@@ -91,4 +92,5 @@
   </div>
 
   <% end %>
+</div>
 </div>
