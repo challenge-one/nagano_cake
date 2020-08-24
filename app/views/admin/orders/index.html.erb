@@ -1,2 +1,47 @@
-<h1>Admin::Orders#index</h1>
-<p>Find me in app/views/admin/orders/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-10 col-offset-1">
+
+  		<div class="row">
+  			<div class="col-xs-offset-2 col-xs-2">
+  	  		<h4>注文履歴一覧</h4>
+  	  		</div>
+  		</div>
+
+  		<div class="row">
+  	  		<div class="col-xs-offset-2">
+		  		<table class="table active">
+		  		<thead>
+			  		<tr class="active">
+			  			<th>購入日時</th>
+			  			<th>購入者</th>
+			  			<th>注文個数</th>
+			  			<th>注文ステータス</th>
+			  		</tr>
+		  		</thead>
+		  		<tbody>
+		  	  		<% @orders.each do |order| %>
+		  	  			<tr>
+		  	  	    		<td>
+		  	  	    		<%= link_to admin_orders_path(order) do %>
+		  	  	      		<%= order.created.at %>
+		  	  	      		<% end %>
+		  	  	    		</td>
+		  	  	    		<td><%= order.addressee %></td>
+		  	  	    		<td><%= order.order_items.count %></td>
+		  	  	    		<td><%= order.status %></td>
+		  	  	  		</tr>
+		  	  		<% end %>
+		  		</tbody>
+		  		</table>
+
+		  	<div class="col-xs-offset-3">
+		  		<%= paginate(@orders) %>
+		  	</div>
+
+			</div>
+  		</div>
+
+		</div>
+	</div>
+</div>

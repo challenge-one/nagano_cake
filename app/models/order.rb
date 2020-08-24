@@ -11,6 +11,6 @@ class Order < ApplicationRecord
 		set_delivery: 3,
 		deliveried: 4
 
-  }_prefix: true
+  },_prefix: true
 
 end
