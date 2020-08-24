@@ -17,42 +17,32 @@
 			</tr>
 		</thead>
 		<tbody>
+			<% @orders.each do |order| %>
 			<tr>
-				<td>2020/8/23</td>
-				<td>
-					1111111 <br>
-					東京都東京都東京都東京都東京都東京都東京都東京都　<br>
-					1111111
+				<td><%= order.created_at.strftime('%Y/%m/%d') %>
 				</td>
 				<td>
-				    イチゴショートケーキ <br>
-					ケーキ <br>
-					ガトーショコラ
-			　　</td>
-				<td>2300円</td>
-				<td>入金確認</td>
-				<td><%= link_to "表示する",public_order_path(id:1),class: "btn btn-primary" %>
+					<%= order.postcode %><br>
+					<%= order.address %><br>
+					<%= order.addressee %>
+				</td>
+				<td>
+					<% sum_all = 0 %>
+					<% order.order_items.each do |order_item| %>
+				    <%= order_item.product.name %> </br>
+				    <% sub_total = (order_item.purchased_price * order_item.number) * 1.10 %>
+				    <% sum_all += sub_total %>
+				    <% end %>
+				</td>
+				<td>
+					<%= (sum_all + order.postage).floor(0).to_s(:delimited) %>円
+				</td>
+				<td>
+					<%= order.status_i18n %></td>
+				<td><%= link_to "表示する",public_order_path(order),class: "btn btn-primary" %>
 				</td>
 			</tr>
-　　<!-- eachメソッド実装時はここから下を削除 -->
-			<tr>
-				<td>2020/8/23</td>
-				<td>
-					1111111 <br>
-					東京都東京都東京都東京都東京都東京都東京都東京都　<br>
-					1111111
-				</td>
-				<td>
-					イチゴショートケーキ <br>
-					ケーキ <br>
-					ガトーショコラ
-			　　</td>
-				<td>2300円</td>
-				<td>入金確認</td>
-				<td><%= link_to "表示する",public_order_path(id:1),class: "btn btn-primary" %>
-				</td>
-			</tr>
-	<!-- ここまで -->
+			<% end %>
 		</tbody>
 	</table>
 </div>

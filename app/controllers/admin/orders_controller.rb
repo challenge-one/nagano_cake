@@ -1,5 +1,5 @@
 class Admin::OrdersController < ApplicationController
-	
+  before_action :authenticate_admin!
   def index
   	# ヘッダーからの情報取得（全履歴）
   	@orders = Order.all
