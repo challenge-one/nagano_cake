@@ -1,13 +1,13 @@
 <div class="container main_container">
   <div class="col-lg-offset-2">
-    <div class="row, log_in_title">
-
+    <div class="row">
+      <div class="col-xs-4">
       <h4>会員の方はこちらからログイン</h4>
+      </div>
     </div>
 
     <div class="row">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
       <div class="col-lg-offset-2">
         <table class="log_in_table">
           <tr>
@@ -24,19 +24,19 @@
           </tr>
         </table>
       </div>
-
       <div class="actions_button, col-lg-offset-4">
         <%= f.submit "ログイン", class: "col-lg-2 btn btn-primary" %></br>
       </div>
     <% end %>
     </div>
 
-      <div class="log_in_title">
+    <div class="row">
+      <div class="col-xs-4">
         <h4>登録がお済みのでない方</h4>
       </div>
+    </div>
       <div class="col-lg-offset-1">
         <%= render "customers/shared/links" %>
       </div>
-
   </div>
 </div>

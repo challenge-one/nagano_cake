@@ -14,3 +14,18 @@
 //= require rails-ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function (){
+	$("#theTarget").skippr({
+		trancition : 'slide',
+		speed : 1000,
+		easing : 'easeOutQuart',
+		navType : 'bubble',
+		childrenElementType : 'div',
+		arrows :false,
+		autoPlay :true,
+		autoPlayDuration :2000,
+		keyboardOnAlways :true,
+		hidePrevious :false
+	});
+});

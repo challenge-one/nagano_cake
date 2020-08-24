@@ -6,5 +6,5 @@ class OrderItem < ApplicationRecord
 		create_wait: 1,
 		creating: 2,
 		created: 3
-	}_prefix: true
+	},_prefix: true
 end
