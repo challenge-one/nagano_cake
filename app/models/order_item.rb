@@ -2,9 +2,10 @@ class OrderItem < ApplicationRecord
 	belongs_to :product
 	belongs_to :order
 	enum status: {
-		wait: 0,
-		create_wait: 1,
-		creating: 2,
-		created: 3
-	}_prefix: true
+		入金待ち: 0,
+		入金確認: 1,
+		制作中: 2,
+		発送準備中: 3,
+		発送済み: 4
+	},_prefix: true
 end

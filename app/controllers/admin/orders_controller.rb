@@ -1,12 +1,15 @@
 class Admin::OrdersController < ApplicationController
 	before_action :authenticate_admin!
   def index
+    @path = Rails.application.routes.recognize_path(request.referer)
     @orders = Order.all.page(params[:page])
   end
 
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+    @order_family_name = @order.customer.family_name
+    @order_first_name = @order.customer.first_name
   end
 
   def update
