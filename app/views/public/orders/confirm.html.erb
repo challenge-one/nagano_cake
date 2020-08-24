@@ -1,9 +1,8 @@
+<div class = "container">
 <div class="col-lg-10 offset-1 space">
   <div class="row">
     <h2>注文情報確認</h2>
   </div>
-
-  <%= form_with(model: @order, local: true) do |f| %>
 
   <div class="d-none d-lg-block space">
     <div class="row">
@@ -18,12 +17,12 @@
   <% @cart_items.each do |cart_item| %>
   <div class="row space-sm">
     <div class="col-lg-3">
-      <%= link_to product_path(cart_item.product) do %>
+      <%= link_to public_product_path(cart_item.product) do %>
       <%= attachment_image_tag(cart_item.product, :image, :fill, 100, 100, fallback: "no_img.jpg") %>
       <% end %>
     </div>
     <div class="col-lg-2">
-      <%= link_to product_path(cart_item.product) do %>
+      <%= link_to public_product_path(cart_item.product) do %>
       <%= cart_item.product.name %>
       <% end %>
     </div>
@@ -31,10 +30,10 @@
       <%= price_include_tax(cart_item.product.price) %>
     </div>
     <div class="col-lg-2">
-      <%= cart_item.quantity %>
+      <%= cart_item.number %>
     </div>
     <div class="col-lg-2">
-      <%= sum_product = price_include_tax(cart_item.product.price).to_i * cart_item.quantity %>円
+      <%= sum_product = price_include_tax(cart_item.product.price).to_i * cart_item.number %>円
       <% sum_all += sum_product %>
     </div>
   </div>
@@ -47,7 +46,7 @@
           <strong>送料</strong>
         </div>
         <div class="col-lg-3">
-          <%= @order.postage %>円
+          　　<p>800円</p>
         </div>
       </div>
       <div class="row">
@@ -63,7 +62,7 @@
           <strong>ご請求額</strong>
         </div>
         <div class="col-lg-3">
-          <% billling_amount = sum_all + @order.deliver_fee.to_i %>
+          <% billling_amount = sum_all + 800 %>
           <%= billling_amount.to_i %>円
         </div>
       </div>
@@ -75,7 +74,7 @@
       <h3>支払方法</h3>
     </div>
     <div class="col-lg-4">
-      <%= cash_method(@order.cash_method) %>
+      <%= @order.cash_method %>
     </div>
   </div>
 
@@ -89,10 +88,10 @@
       <%= @order.addressee %>
     </div>
   </div>
-
+<%= form_with(model: @order,url: public_orders_path ,method: :post,local: true) do |f| %>
   <%= f.hidden_field :customer_id, :value => current_customer.id %>
-  <%= f.hidden_field :post_code, :value => "#{@order.postcode}" %>
-  <%= f.hidden_field :send_to_address, :value => "#{@order.address}" %>
+  <%= f.hidden_field :postcode, :value => "#{@order.postcode}" %>
+  <%= f.hidden_field :address, :value => "#{@order.address}" %>
   <%= f.hidden_field :addressee, :value => "#{@order.addressee}" %>
 </div>
 
@@ -103,4 +102,5 @@
 </div>
 
 <% end %>
+</div>
 </div>
