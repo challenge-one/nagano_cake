@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :orders, except: [:update,:destroy,:edit]
     resources :cart_items, except: [:new,:edit,:show]
     resources :genres, only: [:show]
+    get 'search' => 'search#search'
   end
 
   get '/' => 'public/homes#top'
