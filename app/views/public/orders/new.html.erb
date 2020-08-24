@@ -1,3 +1,4 @@
+<div class ="container">
 <div class="col-lg-10 offset-1 space">
 
   <div class="row">
@@ -16,10 +17,10 @@
   <div class="row">
     <div class="col-lg-4 btn-group" data-toggle="buttons">
       <label class="btn btn-outline-secondary active" style="width:50%">
-        <%= f.radio_button :cash_method, true, {checked: true} %> クレジットカード
+        <%= f.radio_button :cash_method, :クレジットカード, {checked: true} %> クレジットカード
       </label>
       <label class="btn btn-outline-secondary" style="width:50%">
-        <%= f.radio_button :cash_method, false, {} %> 銀行振込
+        <%= f.radio_button :cash_method, :銀行振込, {} %> 銀行振込
       </label>
     </div>
   </div>
@@ -31,34 +32,33 @@
   <!-- 自身の住所 -->
   <div class="row">
     <p>
-      <label><%= f.radio_button :add, 1, checked: true, checked: "checked" %>ご自身の住所</label><br>
+      <label><%= f.radio_button :@add, 1, checked: true, checked: "checked" %>ご自身の住所</label><br>
       <%= @customer.postcode %>
       <%= @customer.address %>
-      <%= @customer.full_name %>
+      <%= @customer.family_name %>
     </p>
   </div>
 
   <!-- 登録済み住所 -->
   <div class="row space-sm">
     <p>
-      <label><%= f.radio_button :add, 2, style: "display: inline-block" %>登録済住所から選択</label><br>
-      <%= f.collection_select :address, @customer.addresses, :id, :address %>
+      <label><%= f.radio_button :@add ,2, style: "display: inline-block" %>登録済住所から選択</label><br>
+    <%= f.collection_select :id, @customer.deliveries, :id, :address%>
     </p>
   </div>
 
   <!-- 新しい住所 -->
   <div class="row space-sm">
-    <p><label><%= f.radio_button :add, 3 %>新しいお届け先</label></p>
+    <p><label><%= f.radio_button :@add, 3 %>新しいお届け先</label></p>
   </div>
   <div class="row">
     <div class="col-lg-12">
-      <%= f.fields_for :new_add do |na| %>
       <div class="row">
         <div class="col-lg-3">
           <strong>郵便番号(ハイフンなし)</strong>
         </div>
         <div class="col-lg-6">
-          <%= na.text_field :postcode, class: 'form-control' %>
+          <%= f.text_field :postcode, class: 'form-control' %>
         </div>
       </div>
 
@@ -67,7 +67,7 @@
           <strong>住所</strong>
         </div>
         <div class="col-lg-6">
-          <%= na.text_field :address, class: 'form-control' %>
+          <%= f.text_field :address, class: 'form-control' %>
         </div>
       </div>
 
@@ -76,10 +76,9 @@
           <strong>宛名</strong>
         </div>
         <div class="col-lg-6">
-          <%= na.text_field :addressee, class: 'form-control' %>
+          <%= f.text_field :addressee, class: 'form-control' %>
         </div>
       </div>
-      <% end %>
     </div>
   </div>
   <!-- お届け先ここまで -->
@@ -91,4 +90,5 @@
   </div>
 
   <% end %>
+</div>
 </div>
