@@ -95,3 +95,31 @@ color:#FFFFFF;
 	top:23%;
 	left:15%;
 }
+.image1 {
+	background-image: url(chocolate.jpeg);
+	background-position: center;
+	background-size: 20px 20px;
+	}
+.image2 {
+	background-image: url(maron.jpeg);
+	background-position: center;
+	background-size: contain;
+}
+.image3 {
+	background-image: url(pancake.jpeg);
+	background-position: center;
+	background-size: contain;
+}
+.image4 {
+	background-image: url(shortcake.jpeg);
+	background-position: center;
+	background-size: contain;
+}
+.image5 {
+	background-image: url(about_nagano_cake.jpg);
+	background-position: center;
+	background-size: contain;
+}
+#img-container{
+	height: 400px;
+}

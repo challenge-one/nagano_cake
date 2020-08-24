@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
   belongs_to :customer
-  has_many :order_items, dependent: :destroy
+  # order.id = order_items.order_id
+  has_many :order_items
+  # order.id = order_items.order_id = product.order_items_id
   has_many :products, :through => :order_items
   accepts_nested_attributes_for :order_items
   belongs_to :customer
