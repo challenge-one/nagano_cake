@@ -1,4 +1,6 @@
 class Public::DeliveriesController < ApplicationController
+  before_action :authenticate_customer!
+
   def create
     @delivery = Delivery.new(delivery_params)
     @delivery.customer_id = current_customer.id
