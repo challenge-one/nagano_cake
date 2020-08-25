@@ -3,38 +3,24 @@ class Admin::OrdersController < ApplicationController
 	before_action :authenticate_admin!
 
   def top
-    @count = Order.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).count
   end
 
   def index
-    @path = Rails.application.routes.recognize_path(request.referer)
-    if @path[:action] == "top"
-      @orders = Order.page(params[:page]).where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
-    elsif @path[:action] == "show"
-      @customer = Customer.find(@path[:id])
-      @orders = @customer.orders.page(params[:page])
-    else
-      @orders = Order.page(params[:page])
-    end
-
     case params[:order]
-    when 'today'
+    when 'today' then
       @orders = Order.page(params[:page]).where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
-    when 'customer'
+    when 'customer' then
       customer_id = Rails.application.routes.recognize_path(request.referer)[:id]
       @customer = Customer.find(customer_id)
       @orders = @customer.orders.page(params[:page])
-    when 'all'
+    when 'all' then
       @orders = Order.page(params[:page])
-  
-end
+    end
   end
 
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
-    @order_family_name = @order.customer.family_name
-    @order_first_name = @order.customer.first_name
   end
 
   def update

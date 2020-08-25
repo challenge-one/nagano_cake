@@ -13,6 +13,6 @@ class Order < ApplicationRecord
     制作中: 2,
     発送準備中: 3,
     発送済み: 4
-  },_prefix: true
+  }
 
 end

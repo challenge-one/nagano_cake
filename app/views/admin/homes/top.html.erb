@@ -6,7 +6,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-offset-1 col-xs-6">
-			<h3>本日の注文件数　　<%= link_to @count, admin_orders_path %>件 </h3>
+			<h3>本日の注文件数　　<%= link_to @orders.count, admin_orders_path(order: 'today') %>件 </h3>
 		</div>
 	</div>
 </div>

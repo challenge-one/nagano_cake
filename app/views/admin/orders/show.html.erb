@@ -12,7 +12,10 @@
   			<div class="col-xs-10">
   				<div class="field">
   					<div class="col-xs-4">購入者</div>
-  					<div class="col-xs-8"><%= @order_family_name %><%= @order_first_name %></div>
+  					<div class="col-xs-8">
+              <%= @order.customer.family_name %>
+              <%= @order.customer.first_name %>
+            </div>
   				</div>
   				<div class="field">
   					<div class="col-xs-4">配送先</div>
@@ -25,10 +28,10 @@
   					<div class="col-xs-4">支払い方法</div>
   					<div class="col-xs-8"><%= @order.cash_method %></div>
   				</div>
-  				<%= form_for(@order, url: admin_order_path, method: :patch) do |f| %>
+  				<%= form_for(@order, url: admin_order_path(@order), method: :patch) do |f| %>
   					<div class="col-xs-4">注文ステータス</div>
   					<div class="col-xs-6">
-  						<%= f.select :status,[["入金待ち", 0], ["入金確認", 1], ["制作中", 2], ["発送準備中", 3], ["発送済み", 4]], {}, {class: "status"} %>
+  						<%= f.select :status, Order.statuses.keys.to_a %>
   					</div>
   					<div class="col-xs-2"><%= f.submit "更新", class: "btn btn-primary" %></div>
   				<% end %>
@@ -60,7 +63,7 @@
   							</td>
   							<%= form_for(@order, url: admin_order_path, method: :patch) do |f| %>
   							<td>
-  								<%= f.select :status,[["入金待ち", 0], ["入金確認", 1], ["制作中", 2], ["配送準備中", 3], ["配送済み", 4]], {}, {class: "status"} %>
+  								<%= f.select :status, OrderItem.statuses.keys.to_a %>
   							</td>
   							<td><%= f.submit "更新", class: "btn btn-primary" %></td>
   							<% end %>
