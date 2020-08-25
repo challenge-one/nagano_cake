@@ -5,7 +5,7 @@
 	<%= link_to "会員一覧", admin_customers_path,class: "btn btn-default" %>
 </li>
 <li class="header_list">
-	<%= link_to "注文履歴一覧", admin_orders_path,class: "btn btn-default" %>
+	<%= link_to "注文履歴一覧", admin_orders_path(order: 'all'),class: "btn btn-default" %>
 </li>
 <li class="header_list">
 	<%= link_to "ジャンル一覧", admin_genres_path,class: "btn btn-default" %>
