@@ -17,7 +17,7 @@
 			    <%= attachment_image_tag product, :image, :fill, 200, 200, format: 'jpeg' %>
 			    <div class="list-title">
 			      <p><%= product.name %></p>
-			      <p>(税込)¥<%= price_include_tax(product.price) %></p>
+			      <p>(税込)¥<%= price_include_tax(product.price).to_s(:delimited) %></p>
 			    </div>
 			 </div>
 			 <% end %>

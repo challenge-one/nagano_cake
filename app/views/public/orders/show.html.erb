@@ -74,7 +74,7 @@
 					<tr>
 						<td><%= order_item.product.name %>
 						</td>
-						<td><%= price_include_tax(order_item.purchased_price) %></td>
+						<td><%= price_include_tax(order_item.purchased_price).to_s(:delimited) %></td>
 						<td><%= order_item.number %></td>
 						<td><%= (order_item.purchased_price * order_item.number * 1.10).floor(0).to_s(:delimited) %></td>
 					</tr>
