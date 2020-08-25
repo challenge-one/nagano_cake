@@ -28,8 +28,8 @@
  </div>
 
  <div class="col-md-12">
-    <h4>ステータス</h4>
-    <%= f.collection_select :genre_id, Genre.all,:id, :name, include_blank: "選択して下さい"%>
+    <h4>ジャンル</h4>
+    <%= f.collection_select :genre_id, Genre.where(status: :true),:id ,:name, include_blank: "選択して下さい"%>
  </div>
 
  <div class="col-md-12">
