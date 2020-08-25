@@ -26,7 +26,21 @@ class Customer < ApplicationRecord
     super && (self.status == "true")
   end
   # statusがtrueの場合は有効会員(ログイン可能)
-
-   
+  composed_of :fullname,
+              :class_name => "FullName",
+              :mapping => [
+              [ :family_name, :family_name ],
+              [ :first_name, :first_name ]
+              ]
 end
 
+class FullName
+  attr_reader :family_name, :first_name
+  def initialize(family_name, first_name)
+    @family_name = family_name
+    @first_name = first_name
+  end
+  def to_s
+    [@family_name, @first_name].compact.join(" ")
+  end
+end
