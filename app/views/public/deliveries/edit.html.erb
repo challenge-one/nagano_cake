@@ -1,10 +1,11 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<div class="deliveries_title">
-				<h4>配送先登録/一覧</h4>
-			</div>
-			<div class="row">
+		<div class="col-xs-3">
+			<h4>配送先登録/一覧</h4>
+		</div>
+	</div>
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
 				<%= form_for @delivery, url: public_delivery_path, method: :patch do |f| %>
 					<table class="tabele">
 						<tr>
@@ -24,5 +25,4 @@
 				<% end %>
 			</div>
 		</div>
-	</div>
 </div>

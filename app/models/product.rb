@@ -1,8 +1,10 @@
 class Product < ApplicationRecord
 	belongs_to :genre
-	has_many :cart_items, dependent: :destroy, through: :cart_items
+	has_many :cart_items, through: :cart_items
+	has_many :order_items
+	has_many :products, through: :order_items
 	attachment :image
-	validates :name,presence: true
+	validates :name,presence: true,uniqueness: true
 	validates :introduction,presence: true
 	validates :price,presence: true
 	validates :status,presence: true

@@ -1,23 +1,13 @@
 <div class="container">
 	<div class="row">
+
 		<div class="col-xs-3">
-			<!-- genreの部分テンプレート -->
-			<table class="table">
-				<tr>
-					<th>
-						ジャンル検索
-					</th>
-				</tr>
-					<td>ケーキ</td>
-					<td>焼き菓子</td>
-					<td>プリン</td>
-					<td>キャンディ</td>
-			</table>
-			<!-- genreの部分テンプレート -->
+			<%= render "public/genres/index", genres: @genres %>
 		</div>
+
 		<div class="col-xs-9">
-			<div class="top-image">
-				<div class="top-image-content">
+			<div class="row">
+				<div class="col-xs-offset-3 col-xs-6">
 					<p class="top-image-text">
 						ようこそ、NaganoCakeへ！<br>
 						このサイトは、ケーキ販売のECサイトになります。<br>
@@ -29,31 +19,23 @@
 			<div class="recommendation">
 				<h2>オススメ商品</h2>
 				<% @products.each do |product| %>
-					<div class="recommendation-box">
-						<li><%= attachment_image_tag product, :image, :fill, 50, 50 %></li>
-						<li><%= product.name %></li>
-						<li><%= product.price %></li>
+					<%= link_to public_product_path(product) do %>
+					<div class="list-box" style="display:inline-block;">
+						<%= attachment_image_tag product, :image, :fill, 150, 150, format: 'jpeg' %>
+					 	<div class="list-title">
+					      <p><%= product.name %></p>
+					      <p>(税込)¥<%= price_include_tax(product.price) %></p>
+					 	</div>
 					</div>
-					<div class="recommendation-box">
-						<li><%= attachment_image_tag product, :image, :fill, 50, 50 %></li>
-						<li><%= product.name %></li>
-						<li><%= product.price %></li>
-					</div>
-					<div class="recommendation-box">
-						<li><%= attachment_image_tag product, :image, :fill, 50, 50 %></li>
-						<li><%= product.name %></li>
-						<li><%= product.price %></li>
-					</div>
-					<div class="recommendation-box">
-						<li><%= attachment_image_tag product, :image, :fill, 50, 50 %></li>
-						<li><%= product.name %></li>
-						<li><%= product.price %></li>
-					</div>
+					<% end %>
 				<% end %>
-				<div class="navbar-right">
-					<%= link_to "もっと見る", public_products_path %>
-				</div>
 			</div>
 		</div>
 	</div>
+
+	<div class="row">
+			<div class="col-xs-offset-10 col-xs-2">
+				<%= link_to "もっと見る>", public_products_path %>
+			</div>
+		</div>
 </div>

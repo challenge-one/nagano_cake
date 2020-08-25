@@ -11,35 +11,38 @@
 	</table>
 
 
-
-<table class="table table-bordered">
+<div class="row">
+<div class="col-xs-4">
+	<table class="table table-bordered">
 
 	<tr>
-		<th>氏名</th>
-		<td><%= current_customer.family_name %> <%= current_customer.first_name %></td>
+		<td class="active">氏名</th>
+		<td colspan=""><%= current_customer.family_name %> <%= current_customer.first_name %></td>
 	</tr>
 	<tr>
-		<th>カナ</th>
+		<td class="active">カナ</th>
 		<td><%= current_customer.family_rubi %> <%= current_customer.first_rubi %></td>
 	</tr>
 	<tr>
-		<th>郵便番号</th>
+		<td class="active">郵便番号</th>
 		<td><%= current_customer.postcode %></td>
 	</tr>
 	<tr>
-		<th>住所</th>
+		<td class="active">住所</th>
 		<td><%= current_customer.address %></td>
 	</tr>
 	<tr>
-		<th>電話番号</th>
+		<td class="active">電話番号</th>
 		<td><%= current_customer.tell %></td>
 	</tr>
 	<tr>
-		<th>メールアドレス</th>
+		<td class="active">メールアドレス</th>
 		<td><%= current_customer.email %></td>
 	</tr>
 
-</table>
+	</table>
+</div>
+</div>
 
 
 	<table class="button_table">
