@@ -10,7 +10,7 @@
           <th><strong>小計</strong></th>
       </tr>
 
-      <% sum_all = 0 %>
+          <% sum_all = 0 %>
           <tr>
             <% @cart_items.each do |cart_item| %>
           <td><%= link_to public_product_path(cart_item.product) do %>
@@ -20,15 +20,15 @@
           <%= cart_item.product.name %>
           <% end %></td>
 
-          <td><%= price_include_tax(cart_item.product.price)  %></td>
+          <td><%= price_include_tax(cart_item.product.price).to_s(:delimited)  %></td>
           <td><%= cart_item.number %></td>
-          <td><%= sum_product = price_include_tax(cart_item.product.price).to_i * cart_item.number %>円
-          <% sum_all += sum_product %></td>
+          <%= sum_product = price_include_tax(cart_item.product.price) * cart_item.number %>円
+          <td><%= sum_product.to_s(:delimited) %></td>
+          <% sum_all += sum_product %>
           </tr>
             <% end %>
       </table>
       </div>
-
 
       <div class = col-md-3>
          <table class="table table-bordered cart_item-table">
@@ -38,12 +38,12 @@
         </tr>
         <tr>
            <th><strong>商品合計</strong></th>
-           <td><%= sum_all.to_i %>円</td>
+           <td><%= sum_all.to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <th><strong>ご請求額</strong></th>
           <td><% billling_amount = sum_all + 800 %>
-        <%= billling_amount.to_i %>円</td>
+        <%= billling_amount.to_s(:delimited) %>円</td>
         </tr>
         </table>
       </div>
