@@ -15,7 +15,7 @@
 					<h2 style="margin-top: 0;"><%= @product.name %></h2>
 					<p class="production-text"><%= @product.introduction %></p>
 
-					<h3>¥<%= price_include_tax(@product.price) %><span>(税込)</span></h3>
+					<h3>¥<%= price_include_tax(@product.price).to_s(:delimited) %><span>(税込)</span></h3>
 
 				</div>
 			</div>
