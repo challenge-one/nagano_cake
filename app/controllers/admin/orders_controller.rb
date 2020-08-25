@@ -21,6 +21,9 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+    if @order.status == "入金確認"
+      @order_item.status == "制作待ち"
+    end
   end
 
   def update
@@ -39,7 +42,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:customer_id, :cash_method, :postage, :total_amount, :status, :addressee, :postcode, :address, :created_at)
+    params.require(:order).permit(:status)
   end
 
 end

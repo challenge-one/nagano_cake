@@ -61,7 +61,7 @@
   							<td><%= (order_item.purchased_price * order_item.number * 1.10).floor(0).to_s(:delimited) %>
   								<% @sum += (order_item.purchased_price * order_item.number * 1.10).floor(0) %>
   							</td>
-  							<%= form_for(@order, url: admin_order_path, method: :patch) do |f| %>
+  							<%= form_for(order_item, url: admin_order_item_path(order_item), method: :patch) do |f| %>
   							<td>
   								<%= f.select :status, OrderItem.statuses.keys.to_a %>
   							</td>
