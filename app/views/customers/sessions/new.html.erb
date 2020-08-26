@@ -6,6 +6,8 @@
       </div>
     </div>
 
+    <%= flash[:error] %>
+
     <div class="row">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="col-lg-offset-2">
