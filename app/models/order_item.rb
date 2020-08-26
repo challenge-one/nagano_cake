@@ -7,4 +7,12 @@ class OrderItem < ApplicationRecord
 		制作中: 2,
 		制作完了: 3,
 	}
+
+	def item_create
+		self.order.update(status: "制作中")
+	end
+	
+	def item_create_complete
+		self.order.update(status: "発送準備中")
+	end
 end
