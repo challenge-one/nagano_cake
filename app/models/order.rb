@@ -15,4 +15,8 @@ class Order < ApplicationRecord
     発送済み: 4
   }
 
+def order_cash_complete
+  self.order_items.update(status: "制作待ち")
+end
+
 end
