@@ -50,7 +50,7 @@ before_action :set_customer
       end
 
         render :complete
-    
+
       else
         flash[:notice] = "カートの中身がありません"
         redirect_to public_cart_items_path
@@ -109,5 +109,10 @@ before_action :set_customer
     def address_params
       params.require(:address).permit(
       :customer_id, :postcode, :address, :addressee)
-      end
     end
+
+    def delivery_params
+      params.require(:delivery).permit(:postcode,:address,:addressee)
+    end
+
+end

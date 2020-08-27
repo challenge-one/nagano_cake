@@ -26,7 +26,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(status:1)
     reset_session
-    redirect_to root_path
+    redirect_to "/"
   end
 
   private

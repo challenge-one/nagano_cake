@@ -1,78 +1,81 @@
-                          <div class = "container">
-                   <div class = "row">
-            <h3 style = "padding-left:45px; color:navy;"><strong>注文情報確認</strong></h3>
-       <div class =col-md-9>
-     <table class="table table-bordered cart_item-table">
-       <tr>
-          <th>商品名</strong></th>
-          <th><strong>単価（税込）</strong></th>
-          <th><strong>数量</strong></th>
-          <th><strong>小計</strong></th>
-      </tr>
-
-          <% sum_all = 0 %>
+<div class = "container">
+  <div class = "row">
+    <h3 style = "padding-left:45px; color:navy;"><strong>注文情報確認</strong></h3>
+      <div class =col-md-9>
+        <table class="table table-bordered cart_item-table">
           <tr>
-            <% @cart_items.each do |cart_item| %>
-          <td><%= link_to public_product_path(cart_item.product) do %>
-          <%= attachment_image_tag(cart_item.product, :image, :fill, 100, 100, fallback: "no_img.jpg") %>
-          <% end %>
-          <%= link_to public_product_path(cart_item.product) do %>
-          <%= cart_item.product.name %>
-          <% end %></td>
-
-          <td><%= price_include_tax(cart_item.product.price).to_s(:delimited)  %></td>
-          <td><%= cart_item.number %></td>
-          <%= sum_product = price_include_tax(cart_item.product.price) * cart_item.number %>円
-          <td><%= sum_product.to_s(:delimited) %></td>
-          <% sum_all += sum_product %>
+              <th>商品名</strong></th>
+              <th><strong>単価（税込）</strong></th>
+              <th><strong>数量</strong></th>
+              <th><strong>小計</strong></th>
           </tr>
-            <% end %>
-      </table>
+
+              <% sum_all = 0 %>
+          <tr>
+              <% @cart_items.each do |cart_item| %>
+                <td>
+                  <%= link_to public_product_path(cart_item.product) do %>
+                    <%= attachment_image_tag(cart_item.product, :image, :fill, 100, 100, fallback: "no_img.jpg") %>
+                  <% end %>
+                  <%= link_to public_product_path(cart_item.product) do %>
+                    <%= cart_item.product.name %>
+                  <% end %>
+                </td>
+
+                <td>
+                  <%= price_include_tax(cart_item.product.price).to_s(:delimited)  %>
+                </td>
+                <td><%= cart_item.number %></td>
+                  <% sum_product = price_include_tax(cart_item.product.price) * cart_item.number %>
+                <td><%= sum_product.to_s(:delimited) %></td>
+                <% sum_all += sum_product %>
+          </tr>
+              <% end %>
+          </table>
       </div>
 
       <div class = col-md-3>
-         <table class="table table-bordered cart_item-table">
-        <tr>
-        <th><strong>送料</strong></th>
-        <td>800円</td>
-        </tr>
-        <tr>
-           <th><strong>商品合計</strong></th>
-           <td><%= sum_all.to_s(:delimited) %>円</td>
-        </tr>
-        <tr>
-          <th><strong>ご請求額</strong></th>
-          <td><% billling_amount = sum_all + 800 %>
-        <%= billling_amount.to_s(:delimited) %>円</td>
-        </tr>
+        <table class="table table-bordered cart_item-table">
+          <tr>
+            <th><strong>送料</strong></th>
+            <td>800円</td>
+          </tr>
+          <tr>
+            <th><strong>商品合計</strong></th>
+            <td><%= sum_all.to_s(:delimited) %>円</td>
+          </tr>
+          <tr>
+            <th><strong>ご請求額</strong></th>
+            <td><% billling_amount = sum_all + 800 %>
+            <%= billling_amount.to_s(:delimited) %>円</td>
+          </tr>
         </table>
       </div>
 
       <div class = "col-md-12">
-            <table>
-           <tr>
-          <th><h5 style = "padding-left:20px; color:navy;"><strong>支払方法</strong></h5></th>
-          <td style = "text-align: center; font-size: 18px;"><%= @order.cash_method %></td>
-       </tr>
-       <tr>
-       <th><h5 style = "padding-left:20px; color:navy; "><strong>お届け先</strong></h5></th>
-       <td style = "text-align: center; width:500px; font-size: 18px;"><%= @order.postcode %>
-       <%= @order.address %>
-       <%= @order.addressee %></td>
+        <table>
+          <tr>
+            <th><h5 style = "padding-left:20px; color:navy;"><strong>支払方法</strong></h5></th>
+            <td style = "text-align: center; font-size: 18px;"><%= @order.cash_method %></td>
           </tr>
-            </table>
+          <tr>
+            <th><h5 style = "padding-left:20px; color:navy; "><strong>お届け先</strong></h5></th>
+            <td style = "text-align: center; width:500px; font-size: 18px;"><%= @order.postcode %>
+            <%= @order.address %>
+            <%= @order.addressee %></td>
+          </tr>
+        </table>
       </div>
-
 
 
       <div class = "col-md-12" style = "padding-top:10px; text-align: center;">
-  <%= form_with(model: @order,url: public_orders_path ,method: :post,local: true) do |f| %>
-  <%= f.hidden_field :customer_id, :value => current_customer.id %>
-  <%= f.hidden_field :postcode, :value => "#{@order.postcode}" %>
-  <%= f.hidden_field :address, :value => "#{@order.address}" %>
-  <%= f.hidden_field :addressee, :value => "#{@order.addressee}" %>
-  <%= f.submit "購入を確定する", class: "btn-lg btn-success" %>
-     <% end %>
+        <%= form_with(model: @order, url: public_orders_path ,method: :post,local: true) do |f| %>
+          <%= f.hidden_field :customer_id, :value => current_customer.id %>
+          <%= f.hidden_field :postcode, :value => "#{@order.postcode}" %>
+          <%= f.hidden_field :address, :value => "#{@order.address}" %>
+          <%= f.hidden_field :addressee, :value => "#{@order.addressee}" %>
+          <%= f.submit "購入を確定する", class: "btn-lg btn-success" %>
+        <% end %>
       </div>
-        </div>
-           </div>
+  </div>
+</div>

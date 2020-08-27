@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :customer
+   belongs_to :customer
   # order.id = order_items.order_id
   has_many :order_items
   # order.id = order_items.order_id = product.order_items_id
