@@ -27,6 +27,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     if @order.update(order_params)
       flash[:success] = "注文ステータスを変更しました"
+      @order.order_cash_complete
       redirect_to admin_order_path(@order)
     else
       render "show"

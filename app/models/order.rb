@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :customer
+   belongs_to :customer
   # order.id = order_items.order_id
   has_many :order_items
   # order.id = order_items.order_id = product.order_items_id
@@ -14,5 +14,9 @@ class Order < ApplicationRecord
     発送準備中: 3,
     発送済み: 4
   }
+
+def order_cash_complete
+  self.order_items.update(status: "制作待ち")
+end
 
 end
