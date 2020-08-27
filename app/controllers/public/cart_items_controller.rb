@@ -16,7 +16,7 @@ class Public::CartItemsController < ApplicationController
         redirect_to public_cart_items_path
       else
         @carts_items = @customer.cart_items.all
-        render public_cart_items_path
+        redirect_to public_cart_items_path
       end
     else
       @current_item.number += params[:number].to_i
