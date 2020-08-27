@@ -52,7 +52,8 @@ before_action :set_customer
         render :complete
 
       else
-        redirect_to root_path
+        flash[:notice] = "カートの中身がありません"
+        redirect_to public_cart_items_path
       end
     end
 
@@ -81,7 +82,8 @@ before_action :set_customer
       elsif @add.to_i == 2
         @sta = params[:order][:id].to_i
         @address = Delivery.find(@sta)
-        @order.postcode = @address.address
+        @order.address = @address.address
+        @order.postcode = @address.postcode
         @order.addressee = @address.addressee
       elsif @add.to_i == 3
         @order.postcode = params[:order][:postcode]

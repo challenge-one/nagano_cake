@@ -8,12 +8,11 @@ class OrderItem < ApplicationRecord
 		制作完了: 3,
 	}
 
-	def creating
-		self.status.update(order_item: "creating")
+	def item_create
+		self.order.update(status: "制作中")
 	end
-
-	def created
-		self.status.update(order_item: "set_delivery")
+	
+	def item_create_complete
+		self.order.update(status: "発送準備中")
 	end
-
 end
