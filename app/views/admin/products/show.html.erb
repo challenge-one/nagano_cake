@@ -4,7 +4,8 @@
         <h3 class="show">商品詳細</h3>
          <div class="row">
            <div class="col-md-6" style="text-align: center;">
-           <%= attachment_image_tag @product, :image, :fill, 300, 300%>
+           <%= attachment_image_tag @product, :image, :fill, 250, 250%>
+          <div id="result"></div>
           </div>
 
       <table>
@@ -26,7 +27,7 @@
 
       <tr>
       <th><label>税込価格(税抜価格)</label></th>
-      <td><%= @product_tax %>(<%= @product.price %>)円</td>
+      <td><%= @product_tax.to_s(:delimited) %>(<%= @product.price.to_s(:delimited) %>)円</td>
       </tr>
 
       <tr>

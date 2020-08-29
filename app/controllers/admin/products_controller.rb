@@ -34,7 +34,7 @@ class Admin::ProductsController < ApplicationController
         flash[:notice] = "You have updated product successfully."
         redirect_to admin_product_path(@product)
     else
-        reder :edit
+        render :edit
     end
  end
 

@@ -11,7 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery_ujs
 //= require rails-ujs
+//= require activestorage
 //= require bootstrap-sprockets
 //= require_tree .
 
@@ -28,4 +30,14 @@ $(document).ready(function (){
 		keyboardOnAlways :true,
 		hidePrevious :false
 	});
+});
+$(document).on('turbolinks:load', function() {
+    $('#item_image').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $(".image").attr('src', e.target.result);
+    }
+// ここまで
+    reader.readAsDataURL(e.target.files[0]); 
+});
 });
