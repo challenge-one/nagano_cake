@@ -13,6 +13,9 @@
 <% end %>
 <h3>商品編集</h3>
   <%= form_for(@product,url: admin_product_path) do |f| %>
+      <div id="item_image">
+        <%= attachment_image_tag @product,:image, size:"300x300"%>
+      </div>
        <%= f.attachment_field :image %>
    </div>
 
